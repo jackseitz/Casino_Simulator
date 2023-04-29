@@ -1,0 +1,1054 @@
+#include <iostream>
+#include <stdlib.h>
+#include <Windows.h>
+#include <time.h>
+#include <string>
+#include <random>
+#include <ctime>
+#include <stdio.h>
+
+using namespace std;
+
+class Casino {
+private:
+	int balance;
+public:
+	Casino() {
+		balance = 100;
+	}
+	
+	int bet{};
+
+	void Baccarat() {
+
+		char know = 'k', again = 'y';
+		int select;
+		int ltotal, rtotal;
+		srand(time(0));
+
+		int one = rand() % 13 + 1;
+		int two = rand() % 13 + 1;
+		int three = rand() % 13 + 1;
+		int four = rand() % 13 + 1;
+
+
+		string oface = to_string(one);
+		string twface = to_string(two);
+		string thface = to_string(three);
+		string fface = to_string(four);
+
+
+		cout << "Welcome to Baccarat" << endl;
+		while (know != 'y' && know != 'Y' && know != 'n' && know != 'N') {
+			cout << "Do you know how to play Baccarat? (y/n)" << endl;
+			cin >> know;
+			cout << endl;
+		}
+		if (know == 'n' || know == 'N') {
+
+			cout << "Baccarat is a casino card game that is played for some of the highest stakes around the world." << endl;
+			cout << "When you start playing Baccarat you must place a bet on the banker, the player or a tie." << endl;
+			cout << "After placing your bet all of the rest of the action is completed based on very strict rules, " << endl;
+			cout << "making this one of the easiest casino card games to play." << endl;
+			cout << "The object is to have the hand you bet on score a higher total than the other hand," << endl;
+			cout << "or for the two hands to tie in the event you bet on a tie." << endl;
+			cout << "Scores only go up to 9, as any digits in the tens column are dropped." << endl;
+			cout << "For example, a hand with a 10 and an 8 will score as an 8, not an 18.A hand containing an ace and 6 scores a total of 7." << endl;
+			cout << "Winning bets on the player pay 1-1 and winning bets on the banker pay 1-1 minus a small house commission, usually 5%." << endl;
+			cout << "The tie bet usually pays 9 to 1, but it can vary." << endl;
+			cout << endl;
+		}
+
+		cout << "How much would you like to bet?" << endl;
+		cin >> bet;
+		cout << endl;
+
+		cout << "Will 1) the left hand be higher, 2) the right hand be higher, or 3) the hands tie?" << endl;
+		cin >> select;
+		cout << endl;
+
+		if (one == 1) {
+			oface = 'A';
+		}
+		if (two == 1) {
+			twface = 'A';
+		}
+		if (three == 1) {
+			thface = 'A';
+		}
+		if (four == 1) {
+			fface = 'A';
+		}
+		if (one == 11) {
+			oface = 'J';
+			one = 0;
+		}
+		if (two == 11) {
+			twface = 'J';
+			two = 0;
+		}
+		if (three == 11) {
+			thface = 'J';
+			three = 0;
+		}
+		if (four == 11) {
+			fface = 'J';
+			four = 0;
+		}
+		if (one == 12) {
+			oface = 'Q';
+			one = 0;
+		}
+		if (two == 12) {
+			twface = 'Q';
+			two = 0;
+		}
+		if (three == 12) {
+			thface = 'Q';
+			three = 0;
+		}
+		if (four == 12) {
+			fface = 'Q';
+			four = 0;
+		}
+		if (one == 13) {
+			oface = 'K';
+			one = 0;
+		}
+		if (two == 13) {
+			twface = 'K';
+			two = 0;
+		}
+		if (three == 13) {
+			thface = 'K';
+			three = 0;
+		}
+		if (four == 13) {
+			fface = 'K';
+			four = 0;
+		}
+
+		cout << "Left Hand: " << oface << " " << twface << "          Right Hand: " << thface << " " << fface << endl;
+		cout << endl;
+		ltotal = one + two;
+		rtotal = three + four;
+		cout << "Left hand Total: " << ltotal << "        Right Hand Total: " << rtotal << endl;
+		cout << endl;
+		cout << endl;
+		if (select == 1 && ltotal > rtotal) {
+			cout << "Congratulations you bet correctly." << endl;
+			balance = balance + bet;
+		}
+		else if (select == 2 && rtotal > ltotal) {
+			cout << "Congratulations you bet correctly." << endl;
+			balance = balance + bet;
+		}
+		else if (select == 3 && rtotal == ltotal) {
+			cout << "Congratulations you bet correctly." << endl;
+			bet = bet * 9;
+			balance = balance + bet;
+		}
+		else {
+			cout << "Unforntunately you lost." << endl;
+			balance = balance - bet;
+		}
+		cout << "Your new balance is $" << balance << endl;
+		again = 'g';
+		cout << endl;
+
+	}
+
+	void ThreeCardRummy() {
+
+		srand(time(0));
+
+		int one = rand() % 13 + 1;
+		int two = rand() % 13 + 1;
+		int three = rand() % 13 + 1;
+		int four = rand() % 13 + 1;
+		int five = rand() % 13 + 1;
+		int six = rand() % 13 + 1;
+
+		string fone = to_string(one);
+		string ftwo = to_string(two);
+		string fthree = to_string(three);
+		string ffour = to_string(four);
+		string ffive = to_string(five);
+		string fsix = to_string(six);
+
+		int sone = rand() % 4 + 1;
+		int stwo = rand() % 4 + 1;
+		int sthree = rand() % 4 + 1;
+		int sfour = rand() % 4 + 1;
+		int sfive = rand() % 4 + 1;
+		int ssix = rand() % 4 + 1;
+		string fsone, fstwo, fsthree, fsfour, fsfive, fssix;
+
+		int ptotal, dtotal;
+		char yeno = 'd';
+
+		while (yeno != 'y' && yeno != 'Y' && yeno != 'n' && yeno != 'N') {
+			cout << "Welcome to Vegas 3 Card Rummy. Do you know the rules? (y/n)" << endl;
+			cin >> yeno;
+			cout << endl;
+		}
+
+		if (yeno == 'N' || yeno == 'n') {
+			cout << "In Vegas Three Card Rummy the goal is to get a lower score than the dealer." << endl;
+			cout << "The player and the dealer each receive three cards and the total is calculated for each hand." << endl;
+			cout << "The dealer must score 20 or lower to qualify." << endl;
+			cout << endl;
+			cout << "The player must place a wager to stay in the hand after they receive their cards but before they can look at them." << endl;
+			cout << "When the player stays in and the dealer qualifies and the player has a lower score than the dealer" << endl;
+			cout << "the player wins 4 to 1 on a score of 0, 2 to 1 on a score of 1 to 5 and 1 to 1 on a score of 6 to 19." << endl;
+			cout << endl;
+			cout << "Card values for face cards and tens are 10, aces are 1 and all other cards are their face value." << endl;
+			cout << "Pairs, triples, two card suited runs and three card suited runs count as 0." << endl;
+			cout << endl;
+			cout << endl;
+		}
+
+		if (one == 1) {
+			fone = 'A';
+		}
+		if (two == 1) {
+			ftwo = 'A';
+		}
+		if (three == 1) {
+			fthree = 'A';
+		}
+		if (four == 1) {
+			ffour = 'A';
+		}
+		if (five == 1) {
+			ffive = 'A';
+		}
+		if (six == 1) {
+			fsix = 'A';
+		}
+		if (one == 11) {
+			fone = 'J';
+			one = 10;
+		}
+		if (two == 11) {
+			ftwo = 'J';
+			two = 10;
+		}
+		else if (three == 11) {
+			fthree = 'J';
+			three = 10;
+		}
+		if (four == 11) {
+			ffour = 'J';
+			four = 10;
+		}
+		if (five == 11) {
+			ffive = 'J';
+			five = 10;
+		}
+		if (six == 11) {
+			fsix = 'J';
+			six = 10;
+		}
+		if (one == 12) {
+			fone = 'Q';
+			one = 10;
+		}
+		if (two == 12) {
+			ftwo = 'Q';
+			two = 10;
+		}
+		if (three == 12) {
+			fthree = 'Q';
+			three = 10;
+		}
+		if (four == 12) {
+			ffour = 'Q';
+			four = 10;
+		}
+		if (five == 12) {
+			ffive = 'Q';
+			five = 10;
+		}
+		if (six == 12) {
+			fsix = 'Q';
+			six = 10;
+		}
+		if (one == 13) {
+			fone = 'K';
+			one = 10;
+		}
+		if (two == 13) {
+			ftwo = 'K';
+			two = 10;
+		}
+		if (three == 13) {
+			fthree = 'K';
+			three = 10;
+		}
+		if (four == 13) {
+			ffour = 'K';
+			four = 10;
+		}
+		if (five == 13) {
+			ffive = 'K';
+			five = 10;
+		}
+		if (six == 13) {
+			fsix = 'K';
+			six = 10;
+		}
+
+		if (sone == 1) {
+			fsone = " of Hearts  ";
+		}
+		if (stwo == 1) {
+			fstwo = " of Hearts  ";
+		}
+		if (sthree == 1) {
+			fsthree = " of Hearts  ";
+		}
+		if (sfour == 1) {
+			fsfour = " of Hearts  ";
+		}
+		if (sfive == 1) {
+			fsfive = " of Hearts  ";
+		}
+		if (ssix == 1) {
+			fssix = " of Hearts  ";
+		}
+		if (sone == 2) {
+			fsone = " of Diamonds";
+		}
+		if (stwo == 2) {
+			fstwo = " of Diamonds";
+		}
+		if (sthree == 2) {
+			fsthree = " of Diamonds";
+		}
+		if (sfour == 2) {
+			fsfour = " of Diamonds";
+		}
+		if (sfive == 2) {
+			fsfive = " of Diamonds";
+		}
+		if (ssix == 2) {
+			fssix = " of Diamonds";
+		}
+		if (sone == 3) {
+			fsone = " of Clubs   ";
+		}
+		if (stwo == 3) {
+			fstwo = " of Clubs   ";
+		}
+		if (sthree == 3) {
+			fsthree = " of Clubs   ";
+		}
+		if (sfour == 3) {
+			fsfour = " of Clubs   ";
+		}
+		if (sfive == 3) {
+			fsfive = " of Clubs   ";
+		}
+		if (ssix == 3) {
+			fssix = " of Clubs   ";
+		}
+		if (sone == 4) {
+			fsone = " of Spades  ";
+		}
+		if (stwo == 4) {
+			fstwo = " of Spades  ";
+		}
+		if (sthree == 4) {
+			fsthree = " of Spades  ";
+		}
+		if (sfour == 4) {
+			fsfour = " of Spades  ";
+		}
+		if (sfive == 4) {
+			fsfive = " of Spades  ";
+		}
+		if (ssix == 4) {
+			fssix = " of Spades  ";
+		}
+
+		cout << "You have your cards but before you look at them, How much do you want to bet in dollars?" << endl;
+		cin >> bet;
+		cout << endl;
+		cout << "Your Cards                                                                 Dealer's Cards" << endl;
+		cout << fone << fsone << "                                                          " << ffour << fsfour << endl;
+		cout << ftwo << fstwo << "                                                          " << ffive << fsfive << endl;
+		cout << fthree << fsthree << "                                                          " << fsix << fssix << endl;
+		cout << endl;
+		cout << endl;
+
+		if (one == two && one != three) {
+			ptotal = three;
+		}
+		else if (one == three && one != two) {
+			ptotal = two;
+		}
+		else if (two == three && one != three) {
+			ptotal = one;
+		}
+		else if (sone == stwo && sone != sthree) {
+			ptotal = three;
+		}
+		else if (sone == sthree && sone != stwo) {
+			ptotal = two;
+		}
+		else if (stwo == sthree && sone != sthree) {
+			ptotal = one;
+		}
+		else if (one == two && one == three) {
+			ptotal = 0;
+		}
+		else if (sone == stwo && sone == sthree) {
+			ptotal = 0;
+		}
+		else {
+			ptotal = one + two + three;
+		}
+
+		if (four == five && four != six) {
+			dtotal = six;
+		}
+		else if (four == six && four != five) {
+			dtotal = five;
+		}
+		else if (five == six && four != six) {
+			dtotal = four;
+		}
+		else if (sfour == sfive && sfour != ssix) {
+			dtotal = six;
+		}
+		else if (sfour == ssix && sfour != sfive) {
+			dtotal = five;
+		}
+		else if (sfive == ssix && sfour != ssix) {
+			dtotal = four;
+		}
+		else if (four == five && four == six) {
+			dtotal = 0;
+		}
+		else if (sfour == sfive && sfour == ssix) {
+			dtotal = 0;
+		}
+		else {
+			dtotal = four + five + six;
+		}
+
+		if (dtotal < 21) {
+			if (dtotal < ptotal) {
+				cout << "You lost" << endl;
+				balance = balance - bet;
+			}
+			else if (ptotal == 0) {
+				cout << "You won with a 4 times multiplier on your bet!!" << endl;
+				bet = bet * 4;
+				balance = balance + bet;
+			}
+			else if (ptotal >= 1 && ptotal <= 5) {
+				cout << "You won with a 2 times multiplier on your bet!!" << endl;
+				bet = bet * 2;
+				balance = balance + bet;
+			}
+			else if (ptotal >= 6 && ptotal <= 19) {
+				cout << "You won with a 1 times multiplier on your bet!!" << endl;
+				balance = balance + bet;
+			}
+			else if (ptotal == dtotal) {
+				cout << "You tied. Your money will be returned." << endl;
+			}
+		}
+		else {
+			cout << "Unfortunately the dealers hand was over 20 so the hand can not be played." << endl;
+			cout << "You will be returned to the lobby and can choose to play again if you please." << endl;
+			cout << "Your money is returned to you" << endl;
+		}
+		cout << endl;
+		cout << "Your current balance is $" << balance << "." << endl;
+		cout << endl;
+	}
+
+	void pull() {
+
+		char Pull;
+
+
+		cout << "Do you want to play the slot machine?" << endl;
+		cout << "Here are the rules: 'Pull' the lever to spin the slot wheel." << endl;
+		cout << endl;
+		cout << "7's are lucky, one gets you a small win." << endl;
+		cout << "A pair of any number is a medium win" << endl;
+		cout << "Three of any number is a big win" << endl;
+		cout << "Remember 7's are lucky, so three 7's is a jackpot, a huge win!" << endl;
+		cout << endl;
+		cout << "First, input your bet amount" << endl;
+		cin >> bet;
+		balance = balance - bet;
+		cout << endl;
+		cout << "Type 'Pull' to play" << endl;
+		cin >> Pull;
+
+	}
+
+	void wheel() {
+
+		int num;
+		int ber;
+		int var;
+		int i;
+		srand(time(0));
+
+		cout << "Spinning ..." << endl;
+		cout << endl;
+		cout << "Money Line:" << endl;
+		cout << endl;
+
+		num = rand() % 8;
+		Sleep(1500);
+		cout << num << "\t";
+
+		ber = rand() % 8;
+		Sleep(1500);
+		cout << ber << "\t";
+
+		var = rand() % 8;
+		Sleep(1500);
+		cout << var << "\t" << endl;
+
+		if (num == 7 || ber == 7 || var == 7) {
+			cout << "Lucky number 7! Bonus points!" << endl;
+			bet = bet / 2;
+			balance = balance + bet;
+		}
+
+		if (num == var || num == ber || ber == var) {
+			cout << "A pair! That's a medium win!" << endl;
+			bet = bet * 2;
+			balance = balance + bet;
+		}
+		else if (num == ber && ber == var) {
+			cout << "Three of a kind! That's a big win" << endl;
+			bet = bet * 5;
+			balance = balance + bet;
+		}
+		else if (num == 7 && ber == 7 && var == 7) {
+			cout << "JACKPOT!! Huge Win!" << endl;
+			bet = bet * 10;
+			balance = balance + bet;
+		}
+		else {
+			cout << "Sorry, you did not get a pair" << endl;
+		}
+		cout << endl;
+		cout << endl;
+		cout << "Your new balance is $" << balance << endl;
+	}
+
+	void Roulette() {
+
+		string Rchoice;
+		string Rcolor;
+		int Rnumber;
+
+		cout << "Choose 'number', 'color', or 'both'" << endl;
+		cin >> Rchoice;
+
+		if (Rchoice == "number") {
+
+			srand(time(0));
+
+			cout << "Pick a number" << endl;
+			cin >> Rnumber;
+
+			cout << "How much would you like to bet?" << endl;
+			cin >> bet;
+
+			int winningNumber = rand() % 36 + 1;
+			srand(time(NULL));
+
+			cout << "The ball landed on: " << winningNumber << endl;
+
+			if (Rnumber == winningNumber) {
+
+				cout << "Congrats! you won!" << endl;
+				cout << "You win $" << bet << endl;
+
+				balance = balance + bet;
+
+			}
+			else {
+
+				cout << "Sorry, you lost $" << bet << endl;
+
+				balance = balance - bet;
+			}
+		}
+
+		if (Rchoice == "color") {
+
+			cout << "Pick a color, red or black" << endl;
+			cin >> Rcolor;
+
+			cout << "How much would you like to bet?" << endl;
+			cin >> bet;
+
+			srand(time(0));
+			const string colorList[2] = { "black","red" };
+
+			string winningColor = colorList[rand() % 2];
+
+			cout << "The ball landed on: " << winningColor << endl;
+
+			if (Rcolor == winningColor) {
+
+				cout << "Congrats! You won!" << endl;
+				cout << "You win $" << bet << endl;
+
+				balance = balance + bet;
+			}
+			else {
+
+				cout << "Sorry, you lost $" << bet << endl;
+
+				balance = balance - bet;
+			}
+
+		}
+
+		if (Rchoice == "both") {
+
+			srand(time(0));
+
+			cout << "Pick a color, red or black" << endl;
+			cin >> Rcolor;
+
+			cout << "Pick a number" << endl;
+			cin >> Rnumber;
+
+			cout << "How much would you like to bet?";
+			cin >> bet;
+
+			int winningNumber = rand() % 36 + 1;
+			srand(time(NULL));
+
+			srand(time(0));
+			const string colorList[2] = { "black","red" };
+
+			string winningColor = colorList[rand() % 2];
+
+			cout << "The ball landed on: " << winningColor << " " << winningNumber << endl;
+
+			if ((Rcolor == winningColor) && (Rnumber == winningNumber)) {
+
+				cout << "Congrats! You won!" << endl;
+				cout << "You win $" << bet << endl;
+
+				balance = balance + bet;
+			}
+			else {
+
+				cout << "Sorry, you lost $" << bet << endl;
+
+				balance = balance - bet;
+			}
+
+		}
+		cout << endl;
+		cout << "Your new balance is $" << balance << endl;
+	}
+
+	void Dice() {
+
+		string Dchoice;
+
+		cout << "Lets roll some dice" << endl;
+
+		cout << "You get 5 rolls, 5 dice." << endl;
+
+		cout << "The object of the game is to get 2 dice to yield the same number, or have the sum of the numbers be equal to a number you guess." << endl;
+
+		cout << "What would you like to bet?" << endl;
+		cin >> bet;
+
+		cout << "What would you like to play? 2 of a kind, or equal to? Type 'two' or 'equals' " << endl;
+		cin >> Dchoice;
+
+		if (Dchoice == "two") {
+
+			srand(time(0));
+
+			cout << "Go ahead and roll em" << endl;
+
+			int rollOne = rand() % 6 + 1;
+
+			cout << "Your first role gave you a " << rollOne << endl;
+
+			int rollTwo = rand() % 6 + 1;
+
+			cout << "Your second role gave you a " << rollTwo << endl;
+
+			int rollThree = rand() % 6 + 1;
+
+			cout << "Your third role gave you a " << rollThree << endl;
+
+			int rollFour = rand() % 6 + 1;
+
+			cout << "Your fourth role gave you a " << rollFour << endl;
+
+			int rollFive = rand() % 6 + 1;
+
+			cout << "Your fifth role gave you a " << rollFive << endl;
+
+			if ((rollOne || rollTwo || rollThree || rollFour || rollFive) == (rollOne || rollTwo || rollThree || rollFour || rollFive)) {
+
+				cout << "Congrats! You won!" << endl;
+				cout << "You win $" << bet << endl;
+
+				balance = balance + bet;
+			}
+			else {
+
+				cout << "Sorry, you lost $" << bet << endl;
+
+				balance = balance - bet;
+			}
+		}
+
+		if (Dchoice == "equals") {
+
+			int Dnumber;
+			srand(time(0));
+
+			cout << "What are you guessing the rolls to equal?" << endl;
+			cin >> Dnumber;
+
+			cout << "Go ahead and roll em" << endl;
+
+			int rollOne = rand() % 6 + 1;
+
+			cout << "Your first role gave you a " << rollOne << endl;
+
+			int rollTwo = rand() % 6 + 1;
+
+			cout << "Your second role gave you a " << rollTwo << endl;
+
+			int rollThree = rand() % 6 + 1;
+
+			cout << "Your third role gave you a " << rollThree << endl;
+
+			int rollFour = rand() % 6 + 1;
+
+			cout << "Your fourth role gave you a " << rollFour << endl;
+
+			int rollFive = rand() % 6 + 1;
+
+			cout << "Your fifth role gave you a " << rollFive << endl;
+
+			if ((rollOne + rollTwo + rollThree + rollFour + rollFive) == Dnumber) {
+
+				cout << "Congrats! You won!" << endl;
+				cout << "You win $" << bet << endl;
+
+				balance = balance + bet;
+			}
+			else {
+
+				cout << "Sorry, you lost $" << bet << endl;
+
+				balance = balance - bet;
+			}
+		}
+		cout << endl;
+		cout << "Your new balance is $" << balance << endl;
+	}
+
+	int dhandSize = 0;
+	int phandSize = 0;
+	int dhandSum = 0;
+	int phandSum = 0;
+	bool playerDone = false;
+	bool dealerDone = false;
+
+	void playBlackjack() {
+		cout << "Let's play Blackjack!\n";
+		// Deal out two cards for both the player and dealer
+		makeBet();
+		addPlayerCard();
+		addPlayerCard();
+		addDealerCard();
+		addDealerCard();
+		sumHands();
+		printHand();
+
+		if (dhandSum == 21) {
+			cout << "Dealer has blackjack. Dealer wins.\n";
+			balance -= bet;
+			return;
+		}
+		else if (phandSum == 21) {
+			cout << "Player has blackjack. Player wins.\n";
+			balance += bet * 2;
+			return;
+		}
+		while (dealerDone == false || playerDone == false) {
+			if (playerDone == false) {
+				cout << "Would you like to hit? (1 - Yes, 2 - No)\n";
+				cin >> phit;
+				if (phit == 1) {
+					addPlayerCard();
+					printHand();
+					sumHands();
+					if (phandSum > 21) {
+						cout << "Player's hand exceeded 21. Player loses.\n";
+						balance -= bet;
+						return;
+					}
+				}
+			}
+			if (playerDone == false) {
+				cout << "Would you like to stand? (1 - Yes, 2 - No)\n";
+				cin >> pstand;
+			}
+			if (pstand == 1) {
+				playerDone = true;
+			}
+			if (dhandSum < 17 && dealerDone != true) {
+				addDealerCard();
+				printHand();
+				sumHands();
+				if (dhandSum > 21) {
+					cout << "Dealer hand exceeded 21. Dealer loses.\n";
+					balance += bet * 2;
+					return;
+				}
+			}
+			else if (dhandSum >= 17) {
+				dealerDone = true;
+			}
+			if (phandSum == 21 && dhandSum == 21) {
+				cout << "Push, player and dealer reached 21.\n";
+				return;
+			}
+			else if (phandSum == 21) {
+				cout << "Player reached 21. Player wins.\n";
+				balance += bet * 2;
+				return;
+			}
+			else if (dhandSum == 21) {
+				cout << "Dealer reached 21. Dealer wins.\n";
+				balance -= bet;
+				return;
+			}
+			if ((playerDone == true && dealerDone == true) || (phandSize == 5 && phandSize == 5)) {
+				if (dhandSum < phandSum) {
+					cout << "Sum of your hand exceeds the dealer's sum of " << dhandSum << "! You win!";
+					balance += bet * 2;
+					return;
+				}
+				else if (phandSum == dhandSum) {
+					cout << "Dealer sum of " << dhandSum << " is equal to the sum of your hand. Tie game.";
+					return;
+				}
+				else if (dhandSum > phandSum) {
+					cout << "Sum of your hand is lower than the dealer's sum of " << dhandSum << ". You lose!";
+					balance -= bet;
+					return;
+				}
+			}
+		}
+		
+	}
+
+	int makeBet() {
+		cout << "Please place a bet. Note that you cannot make a bet exceeding your current balance, which is $" + balance << endl;
+		cin >> bet;
+		do {
+			cout << "Your bet was invalid as it exceeded your balance. Please submit a valid bet.";
+		} while (bet > balance);
+		return bet;
+	}
+
+	int dhand[5];
+	int phand[5];
+	int phit;
+	int pstand;
+
+	void addPlayerCard() {
+		if (phandSize <= 5) {
+			phand[phandSize] = 1 + (rand() % 11);
+			phandSize++;
+		}
+		else {
+			cout << "Sorry. You have reached the maximum number of cards (5)." << endl;
+			playerDone = true;
+		}
+	}
+
+	void addDealerCard() {
+		if (dhandSize <= 5) {
+			dhand[dhandSize] = 1 + (rand() % 11);
+			dhandSize++;
+		}
+		else {
+			dealerDone = true;
+		}
+	}
+
+	void printHand() {
+		cout << "Your current hand is...\n";
+
+		for (int i = 0; i < phandSize; i++) {
+			cout << "    -" << phand[i] << "-    \n\n";
+		}
+		cout << "Dealer's current hand is...\n";
+		for (int j = 0; j < dhandSize; j++) {
+			cout << "    -" << dhand[j] << "-    \n\n";
+		}
+	}
+
+	void sumHands() {
+		dhandSum = 0;
+		phandSum = 0;
+		for (int i = 0; i < dhandSize; i++) {
+			dhandSum += dhand[i];
+		}
+		for (int j = 0; j < phandSize; j++) {
+			phandSum += phand[j];
+		}
+		cout << "Current player hand sum is: " << phandSum << endl;
+	}
+
+	int diceTotal;
+	int dealerDiceTotal;
+
+	void craps() {
+		makeBet2();
+		playCraps();
+	}
+
+	int makeBet2() {
+		cout << "Please place a bet. Note that you cannot make a bet exceeding your current balance, which is $" + balance << endl;
+		cin >> bet;
+		do {
+			cout << "Your bet was invalid as it exceeded your balance. Please submit a valid bet.";
+		} while (bet > balance);
+		return bet;
+	}
+
+	int roll() {
+		int dice1, dice2, diceTotal;
+		int press;
+		cout << "Press 0 to roll: ";
+		cin >> press;
+		if (press == 0) {
+			dice1 = rand() % 6 + 1;
+			dice2 = rand() % 6 + 1;
+			diceTotal = dice1 + dice2;
+			return diceTotal;
+		}
+	}
+
+	int dealerRoll() {
+		int dealDice1, dealDice2, dealDiceTotal;
+		dealDice1 = rand() % 6 + 1;
+		dealDice2 = rand() % 6 + 1;
+		dealDiceTotal = dealDice1 + dealDice2;
+		return dealDiceTotal;
+	}
+
+	void playCraps() {
+		roll();
+		if (diceTotal == 7 || diceTotal == 11) {
+			cout << "The shooter wins!" << endl;
+			balance += bet * 2;
+			roll();
+			if (diceTotal == 2 || diceTotal == 3 || diceTotal == 12) {
+				cout << "You crapped out... The shooter loses!" << endl;
+				balance -= bet;
+				pointRound();
+			}
+
+		}
+		else {
+			cout << "The shooter loses!" << endl;
+			balance -= bet;
+			return;
+		}
+	}
+
+	int pointRound() {
+		int point;
+		if (diceTotal == 4 || diceTotal == 5 || diceTotal == 6 || diceTotal == 8 || diceTotal == 9 || diceTotal == 10) {
+			point = diceTotal;
+		}
+		while (diceTotal != point && dealerDiceTotal != 7) {
+			roll();
+			if (diceTotal == point) {
+				cout << "The shooter rolled the Point! The shooter wins!" << endl;
+				balance += bet * 2;
+			}
+			else if (diceTotal == 7) {
+				cout << "The shooter sevened out! The shooter loses!" << endl;
+				balance -= bet;
+			}
+			dealerRoll();
+			if (dealerDiceTotal == 7) {
+				cout << "The shooter loses!" << endl;
+				balance -= bet;
+			}
+		}
+		return (point);
+	}
+
+};
+
+int main() {
+	Casino one;
+	
+	char another = 'y';
+	int game = 0;
+	
+	while (another == 'y' || another == 'Y') {
+		
+		cout << "Welcome to our Casino!! Here are our games:" << endl;
+		cout << endl;
+		cout << "1: Baccarat" << endl;
+		cout << "2: Three Card Rummy" << endl;
+		cout << "3: Slots" << endl;
+		cout << "4: Roulette" << endl;
+		cout << "5: Dice" << endl;
+		cout << "6: Blackjack" << endl;
+		cout << "7: Craps" << endl;
+		cout << endl;
+		cout << "Type the number that corresponds with the game you want to play" << endl;
+		cin >> game;
+		cout << endl;
+
+		switch (game) {
+		case 1: one.Baccarat();
+			break;
+		case 2: one.ThreeCardRummy();
+			break;
+		case 3: one.pull();
+			one.wheel();
+			break;
+		case 4: one.Roulette();
+			break;
+		case 5: one.Dice();
+			break;
+		case 6: one.playBlackjack();
+			break;
+		case 7: one.craps();
+			break;
+		}
+		another = 'k';
+		cout << endl;
+		while (another != 'y' && another != 'Y' && another != 'n' && another != 'N')
+		{
+			cout << "Do you want to play another game? (y/n)" << endl;
+			cin >> another;
+		}
+	}
