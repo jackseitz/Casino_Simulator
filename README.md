@@ -1,4 +1,4 @@
-# Casino_Simulator
+# Casino Simulator
 Casino Simulator
 
 An interactive casino game. 
